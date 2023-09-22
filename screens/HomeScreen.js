@@ -21,6 +21,7 @@ import {
   fetchTrendingMovies,
   fetchUpcomingMovies,
 } from '../api/moviedb';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const HomeScreen = () => {
   const [trending, setTrending] = useState([]);
@@ -66,6 +67,8 @@ const HomeScreen = () => {
         {/* <TouchableOpacity onPress={nav}>
           <MagnifyingGlassIcon size="33" strokeWidth={2} color="white" />
         </TouchableOpacity> */}
+        {  <Icon name={"film"} size={20} color={"red"} /> }
+
       </View>
 
       {loading ? (
