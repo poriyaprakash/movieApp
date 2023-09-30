@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+// eslint-disable-next-line no-unused-vars
 import React, {useNavigation} from 'react';
 import {View, Text} from 'react-native';
 

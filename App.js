@@ -1,19 +1,16 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import AppNavigation from './navigation/appNavigation';
+import LoginScreen from './screens/LoginScreen';
 
-const App=()=>{
+const App = () => {
   return (
-    <AppNavigation/>
+    // <AppNavigation/>
+    <LoginScreen />
   );
-}
+};
 
-const styles = StyleSheet.create({
-  
-});
+const styles = StyleSheet.create({});
 
 export default App;
