@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
 import { useRoute, useNavigation, ThemeProvider } from '@react-navigation/native';
 import {
@@ -34,24 +35,24 @@ const MovieScreen = () => {
     getMovieDetails(item.id);
     getMovieCredits(item.id);
     getSimilarMovies(item.id);
-  }, [item])
+  }, [item]);
 
   const getMovieDetails=async(id)=>{
     const data = await fetchMovieDetails(id);
     // console.log("movie details: ",data);
     if(data) setMovie(data);
     setLoading(false);
-  }
+  };
   const getMovieCredits=async(id)=>{
     const data = await fetchMovieCredits(id);
     // console.log("got credits: ",data);
     if(data && data.cast) setCast(data.cast);
-  }
+  };
   const getSimilarMovies=async(id)=>{
     const data = await fetchSimilarMovies(id);
     // console.log("similar movies: ",data);
     if(data && data.results) setSimilarMovies(data.results);
-  }
+  };
 
   return (
     <ScrollView
@@ -110,7 +111,7 @@ const MovieScreen = () => {
                 <Text key={index} style={styles.text2}>
                   {genre?.name} {showDot? "• " : null}
                 </Text>
-              )
+              );
             })
           }
           {/* <Text style={styles.text2}>
@@ -139,7 +140,7 @@ const MovieScreen = () => {
       {similarMovies.length>0 && <MovieList title="Similar Movies" data={similarMovies} hideSeeAll={true} navigation={navigation} />}
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   top: {
