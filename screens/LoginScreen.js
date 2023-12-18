@@ -14,6 +14,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+// import FireAuth from './FireAuth';
 
 GoogleSignin.configure({
   webClientId:
@@ -27,7 +28,22 @@ const LoginScreen = ({navigation}) => {
   useEffect(() => {
     GoogleSignin.configure();
   }, []);
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     await FireAuth.googleLogin();
+  //   } catch (error) {
+  //     console.error('Error logging in with Google:', error);
+  //   }
+  // };
 
+  const handleEmailLogin = (email, password) => {
+    console.log('herllo');
+    //   try {
+    //     FireAuth.login(email, password);
+    //   } catch (error) {
+    //     console.error('Error logging in with email and password:', error);
+    //   }
+  };
   const signInWithGoogle = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -51,22 +67,9 @@ const LoginScreen = ({navigation}) => {
 
         // some other error happened
       }
+      navigation.navigate('Home');
     }
   };
-
-  //   const signInWithGoogle = async () => {
-  //     try {
-  //       await GoogleSignin.hasPlayServices();
-  //       const userInfo = await GoogleSignin.signIn();
-  //       const googleCredential = auth.GoogleAuthProvider.credential(
-  //         userInfo.idToken,
-  //         null,
-  //       );
-  //       await auth().signInWithCredential(googleCredential);
-  //     } catch (error) {
-  //       console.error('Error signing in with Google:', error);
-  //     }
-  //   };
 
   const handleSignIn = async () => {
     try {
