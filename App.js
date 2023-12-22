@@ -1,9 +1,4 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 import AppNavigation from './navigation/appNavigation';
 
 const App=()=>{
@@ -11,5 +6,9 @@ const App=()=>{
     <AppNavigation/>
   );
 }
+
+// const styles = StyleSheet.create({
+  
+// });
 
 export default App;

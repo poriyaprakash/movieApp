@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   StyleSheet,
@@ -6,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import { fallbackPersonImage, image185 } from '../api/moviedb';
 
