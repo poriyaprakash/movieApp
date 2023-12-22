@@ -8,10 +8,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {
-  Bars3CenterLeftIcon,
-  MagnifyingGlassIcon,
-} from 'react-native-heroicons/outline';
+// import {
+//   Bars3CenterLeftIcon,
+//   MagnifyingGlassIcon,
+// } from 'react-native-heroicons/outline';
 import TrendingMovies from '../components/trendingMovies';
 import MovieList from '../components/movieList';
 import {useNavigation} from '@react-navigation/native';
@@ -21,7 +21,7 @@ import {
   fetchTrendingMovies,
   fetchUpcomingMovies,
 } from '../api/moviedb';
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 const HomeScreen = () => {
   const [trending, setTrending] = useState([]);
@@ -67,8 +67,6 @@ const HomeScreen = () => {
         {/* <TouchableOpacity onPress={nav}>
           <MagnifyingGlassIcon size="33" strokeWidth={2} color="white" />
         </TouchableOpacity> */}
-        {  <Icon name={"film"} size={20} color={"red"} /> }
-
       </View>
 
       {loading ? (

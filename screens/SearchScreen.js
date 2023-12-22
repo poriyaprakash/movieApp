@@ -101,7 +101,7 @@ const SearchScreen = () => {
               : (
                 <View style={{ flex: 1, alignItems: 'center', marginTop: 100 }}>
                   <Image source={require("../assets/images/movieTime.png")}
-                    style={{ width: width * 0.6, height: height * 0.3, opacity: 0.75 }} />
+                    style={{ width: width * 0.59, height: height * 0.28, opacity: 0.75 }} />
                 </View>
               )
           )
