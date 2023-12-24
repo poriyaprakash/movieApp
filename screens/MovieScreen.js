@@ -80,7 +80,7 @@ const MovieScreen = () => {
               source={{uri: image500(movie?.poster_path) || fallbackMoviePoster}}
               style={styles.image} />
             <LinearGradient
-              colors={['transparent', 'rgba(23,23,23,0.73)', 'rgba(23,23,23,1)']}
+              colors={['transparent', 'rgba(23,23,23,0.2)', 'rgba(23,23,23,1)']}
               style={{ width, height: height, position: 'absolute', bottom: 0 }}
               start={{ x: 0.5, y: 0 }}
               end={{ x: 0.5, y: 1 }} />

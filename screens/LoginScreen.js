@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from 'react';
 import {
   View,
@@ -13,71 +12,51 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
-// import FireAuth from './FireAuth';
+import auth from "@react-native-firebase/auth";
+import { useNavigation } from '@react-navigation/native';
 
-GoogleSignin.configure({
-  webClientId:
-    '1045083224760-82uauon23oftmbokn9c78ta1n1eharvt.apps.googleusercontent.com',
-  // Replace with your Web Client ID from Google Cloud Console
-});
-
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
-    GoogleSignin.configure();
-  }, []);
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     await FireAuth.googleLogin();
-  //   } catch (error) {
-  //     console.error('Error logging in with Google:', error);
-  //   }
-  // };
+    GoogleSignin.configure({
+      webClientId:
+        '1045083224760-82uauon23oftmbokn9c78ta1n1eharvt.apps.googleusercontent.com',
+    });
+  }, [])
 
-  const handleEmailLogin = (email, password) => {
-    console.log('herllo');
-    //   try {
-    //     FireAuth.login(email, password);
-    //   } catch (error) {
-    //     console.error('Error logging in with email and password:', error);
-    //   }
-  };
-  const signInWithGoogle = async () => {
+  const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log('user info', userInfo);
-      //   setState({userInfo});
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredentials = GoogleAuthProvider.credential(idToken);
+      await signInWithCredential(auth, googleCredentials);
     } catch (error) {
+      console.log("got error:",error.message)
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log(error);
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log(error);
-
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log(error);
-
-        // play services not available or outdated
-      } else {
-        console.log(error);
-
-        // some other error happened
+      } 
+      else if (error.code === statusCodes.IN_PROGRESS) {
+      } 
+      else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      } 
+      else {
+      }
+    }
+  };
+  const handleSignIn = async () => {
+    if (email.trim() === '' || password.trim()==='') {
+      console.warn('Email or password is required!!');
+    } 
+    else{
+      try {
+        await auth().signInWithEmailAndPassword("prakashporiya2021@gmail.com",'123456');
+      } 
+      catch (error) {
+        console.error('Error signing in:');
       }
       navigation.navigate('Home');
     }
-  };
-
-  const handleSignIn = async () => {
-    try {
-      await auth().signInWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.error('Error signing in:', error.message);
-    }
-    navigation.navigate('Home');
   };
 
   return (
@@ -94,18 +73,23 @@ const LoginScreen = ({navigation}) => {
         secureTextEntry
         onChangeText={text => setPassword(text)}
       />
-      <Button title="Sign In" onPress={handleSignIn} />
+      <Button title="Sign In"
+        onPress={handleSignIn}
+      />
+
       <Text style={styles.or}>OR</Text>
+
       <GoogleSigninButton
         style={styles.googleButton}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        onPress={signInWithGoogle}
+        onPress={signIn}
       />
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('Signup');
-        }}>
+        }}
+      >
         <Text style={styles.registerText}>New Account? Register Here</Text>
       </TouchableOpacity>
     </View>
@@ -117,9 +101,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#131313'
   },
   header: {
-    fontSize: 24,
+    fontSize: 30,
     marginBottom: 20,
   },
   input: {
