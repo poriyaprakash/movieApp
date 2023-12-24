@@ -139,7 +139,7 @@ const MainStackScreen = () => (
       options={{headerShown: false}}
       component={SearchScreen}
     />
-    <Stack.Screen
+    {/* <Stack.Screen
       name="Login"
       options={{headerShown: false}}
       component={LoginScreen}
@@ -148,7 +148,7 @@ const MainStackScreen = () => (
       name="Signup"
       options={{headerShown: false}}
       component={SignupScreen}
-    />
+    /> */}
   </Stack.Navigator>
 );
 const styles = StyleSheet.create({});
