@@ -1,4 +1,8 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable semi */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
@@ -21,7 +25,7 @@ import {
   fetchTrendingMovies,
   fetchUpcomingMovies,
 } from '../api/moviedb';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreen = () => {
   const [trending, setTrending] = useState([]);
@@ -67,8 +71,7 @@ const HomeScreen = () => {
         {/* <TouchableOpacity onPress={nav}>
           <MagnifyingGlassIcon size="33" strokeWidth={2} color="white" />
         </TouchableOpacity> */}
-        {  <Icon name={"film"} size={20} color={"red"} /> }
-
+        {<Icon name={'film'} size={20} color={'red'} />}
       </View>
 
       {loading ? (
